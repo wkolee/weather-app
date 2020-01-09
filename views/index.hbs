@@ -1,0 +1,27 @@
+<h3>Type a city/state or a Country in to get the weather</h3>
+
+<form action="/" method="post">
+  <div class="form-group">
+    <input type="text" class="form-control" name='city' id="email">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br>
+<hr>
+
+
+<div class="container" style="color: white;">
+<span>City/State: {{weather.name}}</span>
+<br>
+<br>
+<span>Degree: {{weather.main.temp}}&#176;</span>
+<br>
+<br>
+<span>Wind Speed: {{weather.wind.speed}}</span>
+<br>
+<br>
+<span>Humidity: {{weather.main.humidity}}</span>
+
+
+</div>
+
