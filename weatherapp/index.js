@@ -7,9 +7,9 @@ const request = require('request');
 const apiKey = process.env.APIKEY;
 const bodyParser = require('body-parser')
 const dotenv = require('dotenv').config();
-//console.log(process.env)
+console.log(process.env)
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
@@ -36,28 +36,16 @@ app.get('/', (req, res)=>{
 
 app.post('/', (req, res)=>{
     let city = req.body.city;
-    let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.APIKEY}`;
+    let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
 
     request(url, (err, response, body)=>{
         if(err){
-            res.send({
-                success: false,
-                erorr: err
-            }).status(400)
+            res.send(err)
         }
         else{
             let weather = JSON.parse(body)
-            //UI VIEW FOR USER
             res.render('index', {weather: weather});
-
-            //api view FOR API USE
-            /*
-            res.send({
-                success: true,
-                data: weather
-            }).status(200);
             //console.log(weather.main.temp);
-            */
         }
     });
 });
